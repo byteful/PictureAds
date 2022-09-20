@@ -1,0 +1,5 @@
+reload: &aSuccessfully reloaded PictureAds' configuration file.
+failed_to_find_file: &aFailed to find requested image file.
+failed_to_load_url: &aFailed to load provided URL.
+urls_disabled: &cURL pictures are disabled!
+ad_alert: &eAn advertisement has been displayed on your screen.

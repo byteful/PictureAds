@@ -1,0 +1,66 @@
+#
+# PictureAds v${version} by byteful#0001
+#
+
+#
+# File images will only work if they are located directly in the plugin data folder. Make sure the string you type is exactly what the file name is!
+#
+
+# Should PictureAds allow external URLs?
+urls: true
+
+# Should PictureAds ignore players holding items in their offhand? (PictureAds uses the offhand to display a map with the advertisement image on it.) (Items will still be replaced back, but issues may arise if a player is in a PvP fight and loses their shield...)
+ignore_holding: false
+
+# The delay in ticks for the advertisement map to be removed from the player's offhand.
+# 20 ticks = 1 second
+delay: 100
+
+# Should PictureAds send the message to players that lets them know that the displayed map image is an advertisement?
+message: true
+
+# Timezones supported by Java.
+#
+#  EST - -05:00
+#  HST - -10:00
+#  MST - -07:00
+#  ACT - Australia/Darwin
+#  AET - Australia/Sydney
+#  AGT - America/Argentina/Buenos_Aires
+#  ART - Africa/Cairo
+#  AST - America/Anchorage
+#  BET - America/Sao_Paulo
+#  BST - Asia/Dhaka
+#  CAT - Africa/Harare
+#  CNT - America/St_Johns
+#  CST - America/Chicago
+#  CTT - Asia/Shanghai
+#  EAT - Africa/Addis_Ababa
+#  ECT - Europe/Paris
+#  IET - America/Indiana/Indianapolis
+#  IST - Asia/Kolkata
+#  JST - Asia/Tokyo
+#  MIT - Pacific/Apia
+#  NET - Asia/Yerevan
+#  NST - Pacific/Auckland
+#  PLT - Asia/Karachi
+#  PNT - America/Phoenix
+#  PRT - America/Puerto_Rico
+#  PST - America/Los_Angeles
+#  SST - Pacific/Guadalcanal
+#  VST - Asia/Ho_Chi_Minh
+#
+# Only have to be set if you are planning on using schedules.
+timezone: "CST"
+
+# Configuration for scheduled advertisements. Uses configured timezone. Server has to be online during this time for the advertisement to go out.
+# **FORMAT**: "month/day/year hour:minute:second AM/PM" "mm/dd/yyyy hh:mm:ss AM/PM" (Must follow this format CLOSELY or PictureAds may not know what you have set!)
+#
+# Ex: "12/31/2022 10:00:00 AM": "image.png" - Gets the picture from the plugin's data folder with the provided name.
+# Ex: "01/01/2023 10:00:00 AM": "https://byteful.me/test.png" - Gets the picture from the provided URL to display. Must have 'urls' set to true for this to work.
+# Ex: "01/01/2023 09:05:01 PM"
+# Ex: "01/05/2023 09:05:10 PM"
+#
+# You do not have to add schedule times if you do not want to. But leave 'schedule:' here to prevent any errors within the plugin.
+schedule:
+#  "12/31/2022 10:00:00 AM": "image.png" # This will broadcast 'image.png' to all players online on the last day of 2022 at 10:00:00 AM.

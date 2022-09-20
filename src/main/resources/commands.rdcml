@@ -1,0 +1,18 @@
+pictureads,picads,ads,adverts,advertisements {
+    reload {
+      hook reload
+      help Reloads the configuration file.
+      permission pictureads.admin
+    }
+    advertise,broadcast string:image* {
+      hook broadcast
+      help Sends the image advertisement to all player on the server. Takes either a file or URL.
+      permission pictureads.use
+    }
+}
+
+advertise string:image* {
+  hook broadcast
+  help Sends the image advertisement to all player on the server. Takes either a file or URL.
+  permission pictureads.use
+}
