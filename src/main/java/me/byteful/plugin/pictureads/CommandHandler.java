@@ -69,6 +69,7 @@ public final class CommandHandler {
       }
 
       // loaded image, now need to set up renderer to display for all players
+      sender.sendMessage(plugin.getMessages().get("broadcasting_advertisement"));
       Bukkit.getScheduler().runTask(plugin, () -> plugin.broadcast(bufferedImage));
     });
   }
