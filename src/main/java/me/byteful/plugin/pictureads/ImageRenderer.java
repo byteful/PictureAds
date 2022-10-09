@@ -12,6 +12,7 @@ import java.util.UUID;
 public class ImageRenderer extends MapRenderer {
   private final Set<UUID> displayingTo;
   private final BufferedImage image;
+  private boolean rendered = false;
 
   public ImageRenderer(Set<UUID> displayingTo, BufferedImage image) {
     this.displayingTo = displayingTo;
@@ -23,7 +24,11 @@ public class ImageRenderer extends MapRenderer {
     if (!displayingTo.contains(player.getUniqueId())) {
       return;
     }
+    if (rendered) {
+      return;
+    }
 
+    rendered = true;
     canvas.drawImage(0, 0, image);
   }
 }

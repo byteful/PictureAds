@@ -6,6 +6,9 @@
 # File images will only work if they are located directly in the plugin data folder. Make sure the string you type is exactly what the file name is!
 #
 
+# Should PictureAds check for updates?
+update: true
+
 # Should PictureAds allow external URLs?
 urls: true
 

@@ -25,6 +25,11 @@ public final class CommandHandler {
     plugin.loadMessages();
     plugin.scheduledAds.close();
     plugin.scheduledAds = new ScheduledAds(plugin);
+    plugin.updateTask.cancel();
+    plugin.updateChecker = new UpdateChecker(plugin);
+    if (plugin.getConfig().getBoolean("update", true)) {
+      plugin.updateTask = Bukkit.getScheduler().runTaskTimer(plugin, () -> plugin.updateChecker.check(), 0L, 20L * 60L * 60L); // every hour
+    }
     sender.sendMessage(plugin.getMessages().get("reload"));
   }
 

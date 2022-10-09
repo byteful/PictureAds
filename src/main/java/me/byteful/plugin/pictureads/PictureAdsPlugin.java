@@ -9,6 +9,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.MapMeta;
 import org.bukkit.map.MapView;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitTask;
 import redempt.redlib.commandmanager.CommandParser;
 import redempt.redlib.commandmanager.Messages;
 
@@ -24,6 +25,8 @@ public final class PictureAdsPlugin extends JavaPlugin {
   final Map<UUID, ItemStack> offhandItems = new HashMap<>();
   ScheduledAds scheduledAds;
   private Messages messages;
+  UpdateChecker updateChecker;
+  BukkitTask updateTask;
 
   /**
    * Puts the provided image on a map in players' offhand.
@@ -56,6 +59,10 @@ public final class PictureAdsPlugin extends JavaPlugin {
     new CommandParser(getResource("commands.rdcml")).parse().register(this, "pictureads", new CommandHandler(this));
     getServer().getPluginManager().registerEvents(new PlayerListener(this), this);
     scheduledAds = new ScheduledAds(this);
+    updateChecker = new UpdateChecker(this);
+    if (getConfig().getBoolean("update", true)) {
+      updateTask = Bukkit.getScheduler().runTaskTimer(this, () -> updateChecker.check(), 0L, 20L * 60L * 60L); // every hour
+    }
   }
 
   @Override
