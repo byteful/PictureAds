@@ -19,6 +19,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 public final class PictureAdsPlugin extends JavaPlugin {
@@ -61,7 +62,7 @@ public final class PictureAdsPlugin extends JavaPlugin {
     scheduledAds = new ScheduledAds(this);
     updateChecker = new UpdateChecker(this);
     if (getConfig().getBoolean("update", true)) {
-      updateTask = Bukkit.getScheduler().runTaskTimer(this, () -> updateChecker.check(), 0L, 20L * 60L * 60L); // every hour
+      updateTask = Bukkit.getScheduler().runTaskTimer(this, () -> updateChecker.check(), 0L, 20L * TimeUnit.DAYS.toSeconds(1)); // every day
     }
   }
 
