@@ -129,4 +129,8 @@ public final class PictureAdsPlugin extends JavaPlugin {
 
     player.getInventory().setItemInOffHand(item);
   }
+
+  public UpdateChecker getUpdateChecker() {
+    return updateChecker;
+  }
 }

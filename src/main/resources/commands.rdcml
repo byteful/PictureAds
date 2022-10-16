@@ -4,6 +4,11 @@ pictureads,picads,ads,adverts,advertisements {
       help Reloads the configuration file.
       permission pictureads.admin
     }
+    debug {
+      hook debug
+      help Writes debug information to the console for support.
+      user console
+    }
     advertise,broadcast string:image* {
       hook broadcast
       help Sends the image advertisement to all player on the server. Takes either a file or URL.

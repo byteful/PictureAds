@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 
 public final class CommandHandler {
   private final PictureAdsPlugin plugin;
@@ -28,9 +29,23 @@ public final class CommandHandler {
     plugin.updateTask.cancel();
     plugin.updateChecker = new UpdateChecker(plugin);
     if (plugin.getConfig().getBoolean("update", true)) {
-      plugin.updateTask = Bukkit.getScheduler().runTaskTimer(plugin, () -> plugin.updateChecker.check(), 0L, 20L * 60L * 60L); // every hour
+      plugin.updateTask = Bukkit.getScheduler().runTaskTimer(plugin, () -> plugin.updateChecker.check(), 0L, 20L * TimeUnit.DAYS.toSeconds(1)); // every day
     }
     sender.sendMessage(plugin.getMessages().get("reload"));
+  }
+
+  @CommandHook("debug")
+  public void onDebug(CommandSender sender) {
+    plugin.getUpdateChecker().check();
+    sender.sendMessage("PictureAds Debug Information:");
+    sender.sendMessage("- Server Version: " + Bukkit.getVersion());
+    sender.sendMessage("- Server Type: " + Bukkit.getBukkitVersion());
+    sender.sendMessage("- Plugin Version: " + plugin.getDescription().getVersion());
+    sender.sendMessage("- Latest Version: " + plugin.getUpdateChecker().getLastCheckedVersion());
+    sender.sendMessage("- Buyer: %%__USER__%%");
+    sender.sendMessage("- Resource ID: %%__RESOURCE__%%");
+    sender.sendMessage("- MC-Market?: %%__BUILTBYBIT__%%");
+    sender.sendMessage("{!} Please include your configuration with this when asking for help. You MAY OMIT credentials. Please COPY AND PASTE configuration into discord server. {!}");
   }
 
   @CommandHook("broadcast")
